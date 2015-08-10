@@ -1,17 +1,21 @@
-if [ ! -f /usr/local/heroku/heroku-toolbelt-version ]; then
+if [ ! -f $CACHE_DIR/.vendor/heroku-toolbelt-version ]; then
   bpwatch start install_heroku_toolbelt
    
-  curl -s https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz | tar xz
    
-  rm -rf /usr/local/heroku
-  mkdir -p /usr/local/heroku
-  cd /usr/local/heroku
+  rm -rf $CACHE_DIR/.vendor/heroku
+  mkdir -p $CACHE_DIR/.vendor/heroku
+  cd $CACHE_DIR/.vendor/heroku
 
-  mv heroku-client/* .
+  curl -s https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz | tar xz
+
+  mkdir -p $BUILD_DIR/bin
+  mkdir -p $BUILD_DIR/lib
+  mv heroku-client/bin $BUILD_DIR/bin
+  mv heroku-client/lib $BUILD_DIR/lib
   rmdir heroku-client
 
-  PATH="/usr/local/heroku:$PATH"
-  echo "3.40.9" > /usr/local/heroku/heroku-toolbelt-version
+  PATH="$BUILD_DIR/bin:$PATH"
+  echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
 
   bpwatch stop install_heroku_toolbelt
 fi
