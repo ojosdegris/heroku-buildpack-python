@@ -4,27 +4,22 @@ bpwatch start install_heroku_toolbelt
 
 
 puts-step "Removing old heroku-client"
-rm -rf $CACHE_DIR/.vendor/heroku
-mkdir -p $CACHE_DIR/.vendor/heroku
-cd $CACHE_DIR/.vendor/heroku
+rm -rf $BUILD_DIR//heroku
+mkdir -p $BUILD_DIR/heroku
+cd $BUILD_DIR/heroku
 
 puts-step "Fetching heroku-client"
 curl -s https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz | tar xz
 
 puts-step "Installing heroku-client"
-mkdir -p $BUILD_DIR/bin
-mkdir -p $BUILD_DIR/lib
-mv heroku-client/bin/* $BUILD_DIR/bin
-mv heroku-client/lib/* $BUILD_DIR/lib
+mv heroku-client/* .
 rm -rf heroku-client
 
 # set-env PATH '$BUILD_DIR/bin:$PATH'
-echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
+# echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
 
 mkdir -p $BUILD_DIR/.profile.d
-echo 'PATH=$PATH:$HOME/bin' > $BUILD_DIR/.profile.d/heroku.sh
-echo 'LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib' >> $BUILD_DIR/.profile.d/heroku.sh
-echo 'LIBRARY_PATH=$LIBRARY_PATH:$HOME/lib' >> $BUILD_DIR/.profile.d/heroku.sh
+echo 'PATH=$PATH:$HOME/heroku/bin' > $BUILD_DIR/.profile.d/heroku.sh
 
 cd $BUILD_DIR
 bpwatch stop install_heroku_toolbelt
