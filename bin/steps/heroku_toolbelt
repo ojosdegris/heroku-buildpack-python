@@ -14,7 +14,7 @@ if [ ! -f $CACHE_DIR/.vendor/heroku-toolbelt-version ]; then
   mv heroku-client/lib/* $BUILD_DIR/lib
   rm -rf heroku-client
 
-  PATH="$BUILD_DIR/bin:$PATH"
+  set-env PATH '$BUILD_DIR/bin:$PATH'
   echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
 
   cd $BUILD_DIR
