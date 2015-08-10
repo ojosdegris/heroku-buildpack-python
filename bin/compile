@@ -174,7 +174,10 @@ source $BIN_DIR/steps/pylibmc
 # Libffi support.
 source $BIN_DIR/steps/cryptography
 
+# FreeTDS
+source $BIN_DIR/steps/freetds
 # GDAL support.
+
 source $BIN_DIR/steps/gdal
 
 # Install dependencies with Pip.
@@ -182,9 +185,6 @@ source $BIN_DIR/steps/pip-install
 
 # Django collectstatic support.
 sub-env $BIN_DIR/steps/collectstatic
-
-# FreeTDS
-source $BIN_DIR/steps/freetds
 
 # ### Finalize
 #
