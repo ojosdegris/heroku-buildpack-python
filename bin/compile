@@ -176,6 +176,10 @@ source $BIN_DIR/steps/cryptography
 
 # FreeTDS
 source $BIN_DIR/steps/freetds
+
+# Heroku Toolbelt
+source $BIN_DIR/steps/heroku_toolbelt
+
 # GDAL support.
 
 source $BIN_DIR/steps/gdal
