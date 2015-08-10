@@ -1,23 +1,24 @@
-if [ ! -f $CACHE_DIR/.vendor/heroku-toolbelt-version ]; then
-  bpwatch start install_heroku_toolbelt
-   
-   
-  rm -rf $CACHE_DIR/.vendor/heroku
-  mkdir -p $CACHE_DIR/.vendor/heroku
-  cd $CACHE_DIR/.vendor/heroku
+# always update heroku toolbelt
+# if [ ! -f $CACHE_DIR/.vendor/heroku-toolbelt-version ]; then
+bpwatch start install_heroku_toolbelt
 
-  curl -s https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz | tar xz
 
-  mkdir -p $BUILD_DIR/bin
-  mkdir -p $BUILD_DIR/lib
-  mv heroku-client/bin/* $BUILD_DIR/bin
-  mv heroku-client/lib/* $BUILD_DIR/lib
-  rm -rf heroku-client
+rm -rf $CACHE_DIR/.vendor/heroku
+mkdir -p $CACHE_DIR/.vendor/heroku
+cd $CACHE_DIR/.vendor/heroku
 
-  set-env PATH '$BUILD_DIR/bin:$PATH'
-  echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
+curl -s https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz | tar xz
 
-  cd $BUILD_DIR
+mkdir -p $BUILD_DIR/bin
+mkdir -p $BUILD_DIR/lib
+mv heroku-client/bin/* $BUILD_DIR/bin
+mv heroku-client/lib/* $BUILD_DIR/lib
+rm -rf heroku-client
 
-  bpwatch stop install_heroku_toolbelt
-fi
+set-env PATH '$BUILD_DIR/bin:$PATH'
+echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
+
+cd $BUILD_DIR
+
+bpwatch stop install_heroku_toolbelt
+# fi
