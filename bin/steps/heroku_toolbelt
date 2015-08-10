@@ -23,6 +23,8 @@ echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
 
 mkdir -p $BUILD_DIR/.profile.d
 echo 'PATH=$PATH:$HOME/bin' > $BUILD_DIR/.profile.d/heroku.sh
+echo 'LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib' >> $BUILD_DIR/.profile.d/heroku.sh
+echo 'LIBRARY_PATH=$LIBRARY_PATH:$HOME/lib' >> $BUILD_DIR/.profile.d/heroku.sh
 
 cd $BUILD_DIR
 bpwatch stop install_heroku_toolbelt
