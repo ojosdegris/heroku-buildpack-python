@@ -17,5 +17,7 @@ if [ ! -f $CACHE_DIR/.vendor/heroku-toolbelt-version ]; then
   PATH="$BUILD_DIR/bin:$PATH"
   echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
 
+  cd $BUILD_DIR
+
   bpwatch stop install_heroku_toolbelt
 fi
