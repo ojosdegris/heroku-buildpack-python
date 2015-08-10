@@ -183,6 +183,8 @@ source $BIN_DIR/steps/pip-install
 # Django collectstatic support.
 sub-env $BIN_DIR/steps/collectstatic
 
+# FreeTDS
+source $BIN_DIR/steps/freetds
 
 # ### Finalize
 #
