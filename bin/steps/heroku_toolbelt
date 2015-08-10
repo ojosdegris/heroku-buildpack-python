@@ -21,8 +21,8 @@ rm -rf heroku-client
 # set-env PATH '$BUILD_DIR/bin:$PATH'
 echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
 
-mkdir -p $build/.profile.d
-echo 'PATH=$PATH:$HOME/bin' > $build/.profile.d/heroku.sh
+mkdir -p $BUILD_DIR/.profile.d
+echo 'PATH=$PATH:$HOME/bin' > $BUILD_DIR/.profile.d/heroku.sh
 
 cd $BUILD_DIR
 bpwatch stop install_heroku_toolbelt
