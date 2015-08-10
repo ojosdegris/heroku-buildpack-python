@@ -1,7 +1,5 @@
-# always update heroku toolbelt
-# if [ ! -f $CACHE_DIR/.vendor/heroku-toolbelt-version ]; then
+if [ ! -f $CACHE_DIR/.vendor/heroku-toolbelt-version ]; then
 bpwatch start install_heroku_toolbelt
-
 
 puts-step "Removing old heroku-client"
 rm -rf $BUILD_DIR//heroku
@@ -20,7 +18,9 @@ rm -rf heroku-client
 
 mkdir -p $BUILD_DIR/.profile.d
 echo 'PATH=$PATH:$HOME/heroku/bin' > $BUILD_DIR/.profile.d/heroku.sh
+# heroku toolbelt gets installed after the first run
+echo 'heroku auth:whoami' >> $BUILD_DIR/.profile.d/heroku.sh
 
 cd $BUILD_DIR
 bpwatch stop install_heroku_toolbelt
-# fi
+fi
