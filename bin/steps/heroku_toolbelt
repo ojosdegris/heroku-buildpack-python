@@ -10,9 +10,9 @@ if [ ! -f $CACHE_DIR/.vendor/heroku-toolbelt-version ]; then
 
   mkdir -p $BUILD_DIR/bin
   mkdir -p $BUILD_DIR/lib
-  mv heroku-client/bin $BUILD_DIR/bin
-  mv heroku-client/lib $BUILD_DIR/lib
-  rmdir heroku-client
+  mv heroku-client/bin/* $BUILD_DIR/bin
+  mv heroku-client/lib/* $BUILD_DIR/lib
+  rm -rf heroku-client
 
   PATH="$BUILD_DIR/bin:$PATH"
   echo "3.40.9" > $CACHE_DIR/.vendor/heroku-toolbelt-version
