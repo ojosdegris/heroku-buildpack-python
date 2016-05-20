@@ -1,8 +1,7 @@
 Heroku buildpack: Python
 ========================
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Python apps, powered by [pip](http://www.pip-installer.org/). + FreeTDS (from https://github.com/amanjain/heroku-buildpack-python-freetds-pymssql) + pymssql + Heroku Toolbelt
-
+This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Python apps with pymssql (FreeTDS) support
 
 Usage
 -----
@@ -12,23 +11,13 @@ Example usage:
     $ ls
     Procfile  requirements.txt  web.py
 
-    $ heroku create --buildpack git://github.com/heroku/heroku-buildpack-python.git
+    $ heroku create --buildpack git://github.com/ojosdegris/heroku-buildpack-python.git
 
     $ git push heroku master
-    ...
-    -----> Python app detected
-    -----> Installing runtime (python-2.7.9)
-    -----> Installing dependencies using pip
-           Downloading/unpacking requests (from -r requirements.txt (line 1))
-           Installing collected packages: requests
-           Successfully installed requests
-           Cleaning up...
-    -----> Discovering process types
-           Procfile declares types -> (none)
 
 You can also add it to upcoming builds of an existing application:
 
-    $ heroku buildpacks:set git://github.com/heroku/heroku-buildpack-python.git
+    $ heroku buildpacks:set git://github.com/ojosdegris/heroku-buildpack-python.git
 
 The buildpack will detect your app as Python if it has the file `requirements.txt` in the root.
 
